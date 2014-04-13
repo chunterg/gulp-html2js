@@ -1,0 +1,33 @@
+{
+  "name": "gulp-html2js",
+  "version": "0.0.1",
+  "description": "Compile html to js string, and wrap as amd/cmd module.",
+  "license": "MIT",
+  "author": {
+    "name": "chunterg",
+    "email": "chunterg@gmail.com"
+  },
+  "engines": {
+    "node": ">=0.9.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "gulpplugin",
+    "fdmplugin",
+    "neatplugin",
+    "template",
+    "compile",
+    "html"
+  ],
+  "dependencies": {
+    "gulp-util": "~2.2.10"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  }
+}
