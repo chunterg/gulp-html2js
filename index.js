@@ -13,7 +13,9 @@ module.exports = function(opt){
 	      return cb(new gutil.PluginError('gulp-html2js', 'Streaming not supported'));
 	    }
 
-	    var fileContent = String(file.contents)
+	    var fileContent = String(file.contents);
+
+	    console.log(fileContent)
 	}
 
 	return trans;
