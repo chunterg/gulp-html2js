@@ -25,7 +25,8 @@
     "html"
   ],
   "dependencies": {
-    "gulp-util": "~2.2.10"
+    "gulp-util": "~2.2.10",
+    "through2":"~0.4.1"
   },
   "devDependencies": {
     "mocha": "*"

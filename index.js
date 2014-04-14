@@ -1,10 +1,12 @@
 var gutil = require('gulp-util');
+var through = require('through2');
 module.exports = function(opt){
 	var options = opt||{
 		encode:'gbk'
 	};
 
-	function trans(file,cb){
+	function trans(file,enc,cb){
+		console.log(file)
 		if (file.isNull()) {
 	      return cb(null, file);
 	    }
@@ -15,8 +17,8 @@ module.exports = function(opt){
 
 	    var fileContent = String(file.contents);
 
-	    console.log(fileContent)
+	    this.push(file);
 	}
 
-	return trans;
+	return through.obj(trans);
 }
