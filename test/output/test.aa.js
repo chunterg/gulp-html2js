@@ -1,0 +1,2 @@
+offerlist='<!--varname:offerlist-->\
+<div>varname为输出js字符串的变量名</div>';

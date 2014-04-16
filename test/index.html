@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="gbk">
+    <title>test</title>
+
+    <script src="http://style.c.aliimg.com/fdevlib/js/lofty/port/lofty.js"></script>
+    <script src="./output/test.aa.js"></script>
+    <script type="text/javascript">
+      lofty.config({
+         baseUrl: './output/',
+      });
+      define(['tpl/test.aa'],function(tpl){
+        console.log('amd:'+tpl)
+      });
+
+      console.log('default'+offerlist)
+  </script>
+</head>
+<body></body>
+</html>
