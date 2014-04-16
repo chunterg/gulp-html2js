@@ -50,7 +50,7 @@ module.exports = function(opt){
         filecontentTemp = html2js(filecontentTemp);
      	if(options.type=='amd' || options.type=='cmd' || options.type=='fmd'){
             var amdId  = options.modBase?options.modBase+'/'+output.fileName:output.fileName;
-            output.fileContent = '(function() {\n  var templatesCacheLoader = \''+filecontentTemp+'\'\n  ;\n\n  // CommonJS module is defined\n  if (typeof module !== "undefined" && module.exports) {\n      module.exports = templatesCacheLoader;\n  }\n  /*global ender:false */\n  if (typeof ender === \'undefined\') {\n      this[\''+amdId+'\'] = templatesCacheLoader;\n  }\n  /*global define:false */\n  if (typeof define === \"function\" && (define.amd||define.fmd)) {\n      define(\"'+amdId+'\", [], function () {\n          return templatesCacheLoader;\n      });\n  }\n})();'; 
+            output.fileContent = '(function() {\n  var tpl = \''+filecontentTemp+'\'\n  ;\n\n  // cmd\n  if (typeof module !== "undefined" && module.exports) {\n      module.exports = tpl;\n  }\n  // amd\n if (typeof define === \"function\" && (define.amd||define.fmd)) {\n      define(\"'+amdId+'\", [], function () {\n          return tpl;\n      });\n  }\n})();'; 
 	    }else{
 	        output.fileContent = output.varname+'=\'' + filecontentTemp + '\';';
 	    }
