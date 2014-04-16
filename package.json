@@ -1,7 +1,7 @@
 {
-  "name": "gulp-html2js",
+  "name": "gulp-tpl2js",
   "version": "0.0.1",
-  "description": "Compile html to js string, and wrap as amd/cmd module.",
+  "description": "Compile template to js string, and wrap as amd/cmd module.",
   "license": "MIT",
   "author": {
     "name": "chunterg",
@@ -30,6 +30,7 @@
     "iconv-lite": "^0.2.11"
   },
   "devDependencies": {
-    "mocha": "*"
+    "mocha": "*",
+    "gulp": "^3.6.0"
   }
 }

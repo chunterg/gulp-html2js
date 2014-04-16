@@ -1,22 +1,22 @@
-gulp-html2js
+gulp-tpl2js
 ============
 
-> 将HTML模板文件转成js代码或js模块 
+> 将模板文件转成js代码或js模块 
 
 ## 用法
 
 ```
-html2js({opt})
+tpl2js({opt})
 ```
 
 ##例子
 
 ```javascript
 var gulp = require('gulp');
-var html2js = require('gulp-html2js');
+var tpl2js = require('gulp-tpl2js');
 gulp.task('trans', function() {
   gulp.src('./tpl/**')
-  	.pipe(html2js())
+  	.pipe(tpl2js())
   	.pipe(gulp.dest('./output/tpl'))
 });
 ```
@@ -37,7 +37,7 @@ opt（选填）: {
 ```
 
 ```javascript
-//html2js()
+//tpl2js()
 //输出filename.js
 offerlist = '<div>varname为输出js字符串的变量名</div>'
 
@@ -51,7 +51,7 @@ offerlist = '<div>varname为输出js字符串的变量名</div>'
 ```
 
 ```javascript
-//html2js({type:'amd',modBase:'view'})
+//tpl2js({type:'amd',modBase:'view'})
 //输出filename.js
 (function() {
   var tpl = '<!--varname:offerlist-->\

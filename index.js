@@ -4,7 +4,7 @@ var iconv = require('iconv-lite');
 var path = require('path');
 module.exports = function(opt){
 
-	var options = {};
+	var options = {},opt = opt||{};
 	// 文件编码
 	options.encode = opt.encode||"gbk"; 
 
@@ -50,7 +50,7 @@ module.exports = function(opt){
         filecontentTemp = html2js(filecontentTemp);
      	if(options.type=='amd' || options.type=='cmd' || options.type=='fmd'){
             var amdId  = options.modBase?options.modBase+'/'+output.fileName:output.fileName;
-            output.fileContent = '(function() {\n  var tpl = \''+filecontentTemp+'\'\n  ;\n\n  // cmd\n  if (typeof module !== "undefined" && module.exports) {\n      module.exports = tpl;\n  }\n  // amd\n if (typeof define === \"function\" && (define.amd||define.fmd)) {\n      define(\"'+amdId+'\", [], function () {\n          return tpl;\n      });\n  }\n})();'; 
+            output.fileContent = '(function() {\n  var tpl = \''+filecontentTemp+'\';\n\n  // cmd\n  if (typeof module !== "undefined" && module.exports) {\n      module.exports = tpl;\n  }\n  // amd\n if (typeof define === \"function\" && (define.amd||define.fmd)) {\n      define(\"'+amdId+'\", [], function () {\n          return tpl;\n      });\n  }\n})();'; 
 	    }else{
 	        output.fileContent = output.varname+'=\'' + filecontentTemp + '\';';
 	    }
@@ -62,7 +62,7 @@ module.exports = function(opt){
 	    }
 
 	    if (file.isStream()) {
-	      return cb(new gutil.PluginError('gulp-html2js', 'Stream not supported'));
+	      return cb(new gutil.PluginError('gulp-tpl2js', 'Stream not supported'));
 	    }
 	   	var compiledFile = trans(file);
 	    file.contents = iconv.encode(compiledFile.fileContent, options.encode);
