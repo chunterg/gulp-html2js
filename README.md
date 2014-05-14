@@ -24,7 +24,6 @@ gulp.task('trans', function() {
 ### 参数
 ```
 opt（选填）: {
-	encode: 'gbk' // 文件编码，默认：gbk
 	type : 'amd' //是否转成amd/cmd模板，默认js字符串
 	modBase: 'tpl' //模块id基础路径, 默认tpl
 }

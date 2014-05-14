@@ -1,6 +1,6 @@
 {
   "name": "gulp-tpl2js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Compile template to js string, and wrap as amd/cmd module.",
   "license": "MIT",
   "author": {
@@ -27,7 +27,8 @@
   "dependencies": {
     "gulp-util": "~2.2.10",
     "through2": "~0.4.1",
-    "iconv-lite": "^0.2.11"
+    "iconv-lite": "^0.2.11",
+    "jschardet": "^1.1.0"
   },
   "devDependencies": {
     "mocha": "*",

@@ -1,12 +1,13 @@
 var gutil = require('gulp-util');
 var through = require('through2');
 var iconv = require('iconv-lite');
+var jschardet = require('jschardet');
 var path = require('path');
 module.exports = function(opt){
 
 	var options = {},opt = opt||{};
 	// 文件编码
-	options.encode = opt.encode||"gbk"; 
+	// options.encode = opt.encode||"gbk"; 
 
 	// default:普通js字符串
 	// amd/cmd: 通用模块
@@ -27,8 +28,9 @@ module.exports = function(opt){
 		var output = {},
 			varName = '',
 			fileName = '';
+			encode = jschardet.detect(file.contents).encoding,
 			fileBasePath = path.basename(file.path),
-			filecontentTemp = iconv.decode(file.contents, options.encode);
+			filecontentTemp = iconv.decode(file.contents, encode);
 
         // 文件名
         fileName = filecontentTemp.match(/<!--filename:(\w+)-->/);
@@ -65,8 +67,9 @@ module.exports = function(opt){
 	      return cb(new gutil.PluginError('gulp-tpl2js', 'Stream not supported'));
 	    }
 	   	var compiledFile = trans(file);
-	    file.contents = iconv.encode(compiledFile.fileContent, options.encode);
-	    file.path = gutil.replaceExtension(path.basename(file.path), '.js');
+	   	var filename = gutil.replaceExtension(path.basename(file.path), '.js');
+	    file.contents = iconv.encode(compiledFile.fileContent, encode);
+	    file.path = path.join(file.base,gutil.replaceExtension(path.basename(file.path), '.js'));
 	    this.push(file);
 
 	    return cb();
